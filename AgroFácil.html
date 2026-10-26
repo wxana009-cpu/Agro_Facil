@@ -1,0 +1,1975 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroFácil</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        :root {
+            --verde: #246b3b;
+            --verde-escuro: #174a2a;
+            --verde-claro: #eaf5e9;
+            --amarelo: #f2c94c;
+            --branco: #ffffff;
+            --texto: #26352a;
+            --fundo: #f7f9f5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--branco);
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px #00000012;
+        }
+
+        .logo {
+            color: var(--verde);
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d4a51c;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--texto);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--verde);
+        }
+
+        button, .botao {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 17px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        button:hover, .botao:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .botao-verde {
+            background: var(--verde);
+            color: white;
+        }
+
+        .botao-amarelo {
+            background: var(--amarelo);
+            color: #26352a;
+        }
+
+        .botao-claro {
+            background: white;
+            color: var(--verde);
+            border: 1px solid #dce7dc;
+        }
+
+        .hero {
+            background: linear-gradient(110deg, #174a2aee, #246b3bd9),
+                url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85");
+            background-position: center;
+            background-size: cover;
+            color: white;
+            padding: 100px 8%;
+            min-height: 440px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-conteudo {
+            max-width: 670px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #ffffff24;
+            border: 1px solid #ffffff55;
+            padding: 7px 13px;
+            border-radius: 25px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 57px);
+            line-height: 1.12;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--amarelo);
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 27px;
+            max-width: 580px;
+        }
+
+        .botoes-hero {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        section {
+            padding: 65px 7%;
+        }
+
+        .titulo-secao {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 35px;
+        }
+
+        .titulo-secao h2 {
+            font-size: 31px;
+            color: var(--verde-escuro);
+            margin-bottom: 10px;
+        }
+
+        .titulo-secao p {
+            color: #647166;
+        }
+
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sobre-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid #e5ebe2;
+        }
+
+        .icone {
+            font-size: 33px;
+            margin-bottom: 12px;
+        }
+
+        .sobre-card h3 {
+            color: var(--verde);
+            margin-bottom: 8px;
+        }
+
+        .mercado {
+            background: var(--verde-claro);
+        }
+
+        .ferramentas {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .pesquisa {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5dfd4;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--verde);
+            box-shadow: 0 0 0 2px #246b3b18;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filtros select {
+            min-width: 160px;
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .produto {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #173b2010;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .produto img {
+            width: 100%;
+            height: 195px;
+            object-fit: cover;
+            background: #e6eee4;
+        }
+
+        .produto-info {
+            padding: 19px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+        }
+
+        .categoria {
+            background: #e6f3e4;
+            color: var(--verde);
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .produto h3 {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .produtor {
+            font-size: 13px;
+            color: #718075;
+            margin-bottom: 12px;
+        }
+
+        .preco {
+            font-size: 23px;
+            color: var(--verde);
+            font-weight: bold;
+            margin-top: auto;
+            margin-bottom: 12px;
+        }
+
+        .produto-info button {
+            width: 100%;
+        }
+
+        .vazio {
+            text-align: center;
+            padding: 35px;
+            color: #66766a;
+            grid-column: 1 / -1;
+        }
+
+        .cadastro-area {
+            background: white;
+        }
+
+        .cadastro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            align-items: start;
+        }
+
+        .cadastro-texto h2 {
+            font-size: 32px;
+            color: var(--verde-escuro);
+            margin-bottom: 15px;
+        }
+
+        .cadastro-texto p {
+            color: #647166;
+            margin-bottom: 18px;
+        }
+
+        .lista-beneficios {
+            list-style: none;
+        }
+
+        .lista-beneficios li {
+            margin: 13px 0;
+        }
+
+        .formulario {
+            background: var(--fundo);
+            padding: 25px;
+            border-radius: 14px;
+            border: 1px solid #e4eae1;
+        }
+
+        .formulario h3 {
+            color: var(--verde);
+            margin-bottom: 18px;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .formulario button {
+            width: 100%;
+        }
+
+        .cursos-grid, .orientacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .curso, .orientacao {
+            background: white;
+            border: 1px solid #e4eae1;
+            padding: 24px;
+            border-radius: 13px;
+        }
+
+        .curso h3, .orientacao h3 {
+            color: var(--verde);
+            margin-bottom: 10px;
+        }
+
+        .curso p, .orientacao p {
+            color: #647166;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .informacao {
+            background: #fff9e5;
+            border-left: 4px solid #e7bb32;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        .parceria {
+            background: var(--verde-escuro);
+            color: white;
+            text-align: center;
+        }
+
+        .parceria h2 {
+            font-size: 31px;
+            margin-bottom: 12px;
+        }
+
+        .parceria p {
+            max-width: 650px;
+            margin: 0 auto 23px;
+            color: #e2ede3;
+        }
+
+        footer {
+            background: #102e1b;
+            color: #e1ebe2;
+            padding: 30px 7%;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer .logo {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .carrinho {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 200;
+            background: var(--verde);
+            color: white;
+            border-radius: 30px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 15px #00000025;
+        }
+
+        .mensagem {
+            padding: 13px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .mensagem.sucesso {
+            display: block;
+            background: #e3f6e5;
+            color: #185b2a;
+        }
+
+        .mensagem.erro {
+            display: block;
+            background: #ffe8e5;
+            color: #9c2c20;
+        }
+
+        .modal-fundo {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #00000080;
+            z-index: 300;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-fundo.aberto {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .modal-topo {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .fechar {
+            font-size: 23px;
+            background: #edf3eb;
+            color: var(--verde);
+            padding: 5px 12px;
+        }
+
+        .item-carrinho {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e4eae1;
+        }
+
+        .item-carrinho button {
+            background: #fbe5e2;
+            color: #9c2c20;
+            padding: 5px 10px;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--verde);
+        }
+
+        @media (max-width: 900px) {
+            .produtos-grid, .cursos-grid, .orientacoes-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .sobre-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 45px 5%;
+            }
+
+            .hero {
+                padding: 65px 6%;
+            }
+
+            .produtos-grid, .cursos-grid, .orientacoes-grid,
+            .cadastro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .titulo-secao h2 {
+                font-size: 26px;
+            }
+
+            .filtros, .filtros select {
+                width: 100%;
+            }
+        }
+        
+
+.painel-voz {
+    position: fixed;
+    left: 12px;
+    bottom: 18px;
+    z-index: 250;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 210px;
+}
+
+.painel-voz button {
+    min-height: 48px;
+    font-size: 15px;
+    border: 2px solid white;
+    box-shadow: 0 3px 12px #00000030;
+}
+
+.botao-ouvir {
+    background: #174a2a;
+    color: white;
+}
+
+.botao-parar {
+    background: #f2c94c;
+    color: #26352a;
+}
+
+.botao-mic {
+    background: #eaf5e9;
+    color: #174a2a;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.status-voz {
+    background: white;
+    color: #174a2a;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    border: 1px solid #246b3b;
+}
+
+@media (max-width: 600px) {
+    .painel-voz {
+        left: 8px;
+        bottom: 10px;
+        max-width: 175px;
+    }
+
+    .painel-voz button {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    
+<!-- PAINEL DE ACESSIBILIDADE POR VOZ -->
+<div class="painel-voz">
+    <button type="button" class="botao-ouvir"
+        onclick="lerPagina()">
+         Ouvir informações
+    </button>
+
+    <button type="button" class="botao-parar"
+        onclick="pararVoz()">
+         Parar voz
+    </button>
+
+    <button type="button" class="botao-ouvir"
+        onclick="explicarCadastro()">
+         Como cadastrar?
+    </button>
+
+    <div id="statusVoz" class="status-voz"
+        role="status" aria-live="polite">
+        Aperte um botão para ouvir as instruções.
+    </div>
+</div>
+
+   
+    <header>
+        <a href="#inicio" class="logo" style="text-decoration:none">
+            Agro<span>Fácil</span> 
+        </a>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#cadastro">Vender</a>
+            <a href="#cursos">Minicursos</a>
+            <a href="#orientacoes">Orientações</a>
+        </nav>
+    </header>
+
+    
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-conteudo">
+                <span class="etiqueta">Tecnologia a favor do campo</span>
+
+                <h1>
+                    Do campo para sua mesa, de um jeito mais <span>fácil.</span>
+                </h1>
+
+                <p>
+                    Conectamos agricultores familiares a consumidores,
+                    oferecendo espaço para divulgar produtos, aprender
+                    novas técnicas e fortalecer a agricultura local.
+                </p>
+
+                <div class="botoes-hero">
+                    <a href="#produtos" class="botao botao-amarelo">
+                        Ver produtos
+                    </a>
+
+                    <a href="#cadastro" class="botao botao-claro">
+                        Quero vender
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="sobre">
+            <div class="titulo-secao">
+                <h2>Por que o AgroFácil?</h2>
+                <p>
+                    Uma plataforma que utiliza a tecnologia para valorizar
+                    a agricultura familiar e aproximar pessoas.
+                </p>
+            </div>
+
+            <div class="sobre-grid">
+                <article class="sobre-card">
+                    <div class="icone"></div>
+                    <h3>Venda de produtos</h3>
+                    <p>
+                        Agricultores podem divulgar frutas, verduras,
+                        legumes e outros produtos, alcançando novos consumidores.
+                    </p>
+                </article>
+
+                <article class="sobre-card">
+                    <div class="icone"></div>
+                    <h3>Aprendizado no campo</h3>
+                    <p>
+                        Acesso a minicursos, boas práticas agrícolas
+                        e informações para melhorar a produção.
+                    </p>
+                </article>
+
+                <article class="sobre-card">
+                    <div class="icone"></div>
+                    <h3>Parcerias e orientação</h3>
+                    <p>
+                        Aproximação entre agricultores, agrônomos,
+                        profissionais técnicos e possíveis parceiros.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="mercado" id="produtos">
+            <div class="titulo-secao">
+                <h2>Produtos da agricultura familiar</h2>
+                <p>
+                    Conheça os produtos disponíveis na nossa vitrine.
+                    Os itens abaixo são exemplos para demonstração do TCC.
+                </p>
+            </div>
+
+            <div class="ferramentas">
+                <div class="pesquisa">
+                    <input
+                        type="search"
+                        id="pesquisa"
+                        placeholder="Buscar produto ou agricultor..."
+                        aria-label="Buscar produtos"
+                    >
+                </div>
+
+                <div class="filtros">
+                    <select id="filtroCategoria" aria-label="Filtrar categoria">
+                        <option value="">Todas as categorias</option>
+                        <option value="Frutas">Frutas</option>
+                        <option value="Verduras">Verduras</option>
+                        <option value="Legumes">Legumes</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+
+                    <select id="ordenacao" aria-label="Ordenar produtos">
+                        <option value="padrao">Ordenar por</option>
+                        <option value="menor">Menor preço</option>
+                        <option value="maior">Maior preço</option>
+                        <option value="nome">Nome (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="produtos-grid" id="listaProdutos"></div>
+        </section>
+
+       
+        <section class="cadastro-area" id="cadastro">
+            <div class="cadastro-grid">
+                <div class="cadastro-texto">
+                    <h2>Você é agricultor familiar?</h2>
+
+                    <p>
+                        O AgroFácil foi pensado para ajudar você a apresentar
+                        seus produtos, divulgar seu trabalho e ampliar suas
+                        oportunidades de venda.
+                    </p>
+
+                    <ul class="lista-beneficios">
+                        <li> - Divulgue seus produtos.</li>
+                        <li> - Informe preços e unidades de venda.</li>
+                        <li> - Alcance novos consumidores.</li>
+                        <li> - Conheça conteúdos de capacitação.</li>
+                        <li> - Encontre oportunidades de parceria.</li>
+                    </ul>
+                </div>
+
+                <form class="formulario" id="formProduto">
+                    <h3>Cadastrar produto</h3>
+
+                    <div id="mensagemCadastro" class="mensagem"></div>
+
+                    <div class="campo">
+                        <label for="nomeAgricultor">Nome do agricultor</label>
+                        <input id="nomeAgricultor" required
+                            placeholder="Ex.: Maria da Silva">
+
+                        <button type="button" class="botao-mic"
+                             onclick="preencherPorVoz('nomeAgricultor')">
+                            Falar nome do agricultor
+                        </button>
+                    </div>
+
+                    <div class="campo">
+                        <label for="nomeProduto">Nome do produto</label>
+                        <input id="nomeProduto" required
+                            placeholder="Ex.: Tomate">
+
+                        <button type="button" class="botao-mic"
+                       onclick="preencherPorVoz('nomeProduto')">
+                      Falar nome do produto
+                     </button>
+                    </div>
+
+                    <div class="campo">
+                        <label for="categoriaProduto">Categoria</label>
+                        <select id="categoriaProduto" required>
+                            <option value="">Selecione</option>
+                            <option value="Frutas">Frutas</option>
+                            <option value="Verduras">Verduras</option>
+                            <option value="Legumes">Legumes</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="precoProduto">Preço em reais (R$)</label>
+                        <input id="precoProduto" type="number"
+                            min="0.01" step="0.01" required
+                            placeholder="Ex.: 5,00">
+                               
+                    <button type="button" class="botao-mic"
+                     onclick="preencherPorVoz('precoProduto')">
+                      Falar preço do produto
+                     </button>
+                    </div>
+
+                    <div class="campo">
+                        <label for="unidadeProduto">Unidade de venda</label>
+                        <select id="unidadeProduto" required>
+                            <option value="unidade">Unidade</option>
+                            <option value="kg">Quilograma (kg)</option>
+                            <option value="maço">Maço</option>
+                            <option value="dúzia">Dúzia</option>
+                            <option value="litro">Litro</option>
+                            <option value="pacote">Pacote</option>
+                        </select>
+                    </div> 
+
+                    <button class="botao-verde" type="submit">
+                        Cadastrar na vitrine
+                    </button>
+
+                    <p style="font-size:12px;color:#718075;margin-top:12px">
+                        Demonstração acadêmica: os dados ficam somente
+                        nesta sessão do navegador.
+                    </p>
+                </form>
+            </div>
+        </section>
+        
+<section id="cursos">
+    <div class="titulo-secao">
+        <h2>Aprenda com o AgroFácil</h2>
+        <p>
+            Aprenda sobre agricultura assistindo ou ouvindo
+            os nossos minicursos.
+        </p>
+    </div>
+
+    <div class="cursos-grid">
+
+        <article class="curso">
+            <div class="icone"></div>
+            <h3>Introdução à agricultura sustentável</h3>
+            <p>
+                Aprenda a cuidar da terra e do meio ambiente.
+            </p>
+            <button class="botao-verde"
+                onclick="abrirCurso('sustentavel')">
+                 Ver conteúdo
+            </button>
+        </article>
+
+        <article class="curso">
+            <div class="icone"></div>
+            <h3>Irrigação e uso da água</h3>
+            <p>
+                Aprenda a molhar as plantas e economizar água.
+            </p>
+            <button class="botao-verde"
+                onclick="abrirCurso('irrigacao')">
+                Ver conteúdo
+            </button>
+        </article>
+
+        <article class="curso">
+            <div class="icone"></div>
+            <h3>Solo, nutrientes e plantas</h3>
+            <p>
+                Aprenda a cuidar do solo para suas plantas crescerem.
+            </p>
+            <button class="botao-verde"
+                onclick="abrirCurso('solo')">
+                Ver conteúdo
+            </button>
+        </article>
+
+    </div>
+</section>
+
+
+<div id="modalCurso" class="modal-fundo"
+    role="dialog" aria-modal="true"
+    aria-labelledby="tituloCurso">
+
+    <div class="modal">
+        <div class="modal-topo">
+            <h2 id="tituloCurso">Minicurso</h2>
+
+            <button type="button" class="fechar"
+                onclick="fecharCurso()"
+                aria-label="Fechar minicurso">
+                
+            </button>
+        </div>
+
+        <div id="conteudoCurso"></div>
+
+        <div style="display:flex; gap:10px;
+            flex-wrap:wrap; margin-top:20px;">
+
+            <button type="button" class="botao-verde"
+                onclick="ouvirCursoAtual()">
+                Ouvir minicurso
+            </button>
+
+            <button type="button" class="botao-amarelo"
+                onclick="pararCurso()">
+                Parar áudio
+            </button>
+        </div>
+
+        <p id="statusCurso" aria-live="polite"
+            style="margin-top:12px; font-size:14px;">
+            Aperte "Ouvir minicurso" para escutar a explicação.
+        </p>
+    </div>
+</div>
+
+
+
+            <div class="informacao">
+                <strong>Importante:</strong> os conteúdos são introdutórios
+                e demonstrativos. Recomendações específicas de manejo devem
+                considerar a cultura, o solo e as condições locais.
+            </div>
+        </section>
+
+      
+        <section class="mercado" id="orientacoes">
+            <div class="titulo-secao">
+                <h2>Orientações técnicas</h2>
+                <p>
+                    Informações iniciais para ajudar o agricultor
+                    a conhecer melhor sua produção.
+                </p>
+            </div>
+
+            <div class="orientacoes-grid">
+                <article class="orientacao">
+                    <div class="icone"></div>
+                    <h3>Cuidados com o solo</h3>
+                    <p>
+                        A qualidade do solo influencia a disponibilidade
+                        de água, a absorção de nutrientes e o desenvolvimento
+                        das plantas.
+                    </p>
+                    <button class="botao-claro"
+                        onclick="abrirOrientacao('solo')">
+                        Saiba mais
+                    </button>
+                </article>
+
+                <article class="orientacao">
+                    <div class="icone"></div>
+                    <h3>Nutrição vegetal</h3>
+                    <p>
+                        Plantas precisam de nutrientes essenciais para
+                        realizar suas funções metabólicas e crescer.
+                    </p>
+                    <button class="botao-claro"
+                        onclick="abrirOrientacao('nutricao')">
+                        Saiba mais
+                    </button>
+                </article>
+
+                <article class="orientacao">
+                    <div class="icone"></div>
+                    <h3>Manejo de pragas</h3>
+                    <p>
+                        O monitoramento das plantações ajuda a identificar
+                        problemas e escolher medidas adequadas de controle.
+                    </p>
+                    <button class="botao-claro"
+                        onclick="abrirOrientacao('pragas')">
+                        Saiba mais
+                    </button>
+                </article>
+            </div>
+
+            <div class="informacao">
+                As informações desta versão não substituem uma avaliação
+                de agrônomo ou outro profissional habilitado. O projeto
+                poderá incorporar consultorias técnicas em versões futuras.
+            </div>
+        </section>
+
+        <section class="parceria" id="parcerias">
+            <h2>Juntos, podemos fortalecer o campo.</h2>
+
+            <p>
+                Agricultores, consumidores, agrônomos, instituições de ensino
+                e organizações podem contribuir para uma agricultura familiar
+                mais conectada, informada e valorizada.
+            </p>
+
+            <a class="botao botao-amarelo" href="#contato">
+                Conheça o projeto
+            </a>
+        </section>
+
+        
+        <section id="contato">
+            <div class="titulo-secao">
+                <h2>Entre em contato</h2>
+                <p>
+                    Quer participar, colaborar ou conhecer melhor o AgroFácil?
+                    Envie uma mensagem demonstrativa.
+                </p>
+            </div>
+
+            <form class="formulario" id="formContato"
+                style="max-width:600px;margin:auto">
+
+                <div id="mensagemContato" class="mensagem"></div>
+
+                <div class="campo">
+                    <label for="contatoNome">Seu nome</label>
+                    <input id="contatoNome" required
+                        placeholder="Digite seu nome">
+                </div>
+
+                <div class="campo">
+                    <label for="contatoEmail">E-mail</label>
+                    <input id="contatoEmail" type="email" required
+                        placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div class="campo">
+                    <label for="contatoTipo">Como deseja participar?</label>
+                    <select id="contatoTipo" required>
+                        <option value="">Selecione</option>
+                        <option>Agricultor familiar</option>
+                        <option>Consumidor</option>
+                        <option>Agrônomo ou técnico</option>
+                        <option>Instituição ou parceiro</option>
+                        <option>Outro</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="contatoMensagem">Mensagem</label>
+                    <textarea id="contatoMensagem" rows="4" required
+                        placeholder="Escreva sua mensagem..."></textarea>
+                </div>
+
+                <button type="submit" class="botao-verde">
+                    Enviar mensagem
+                </button>
+            </form>
+        </section>
+    </main>
+
+ 
+    <footer>
+        <div class="logo">Agro<span>Fácil</span> </div>
+        <p>
+            Tecnologia, conhecimento e oportunidades para a agricultura familiar.
+        </p>
+        <p style="margin-top:12px">
+            Projeto acadêmico de TCC • AgroFácil © 2026
+        </p>
+    </footer>
+
+    
+    <button class="carrinho" onclick="abrirCarrinho()">
+        Carrinho (<span id="quantidadeCarrinho">0</span>)
+    </button>
+
+    <!-- JANELA DO CARRINHO -->
+    <div class="modal-fundo" id="modalCarrinho">
+        <div class="modal">
+            <div class="modal-topo">
+                <h2>Meu carrinho</h2>
+                <button class="fechar" onclick="fecharModais()">×</button>
+            </div>
+
+            <div id="itensCarrinho"></div>
+            <div class="total" id="totalCarrinho">Total: R$ 0,00</div>
+
+            <p style="font-size:13px;color:#718075;margin-bottom:15px">
+                Esta é uma simulação. O AgroFácil ainda não processa
+                pagamentos nem realiza pedidos reais.
+            </p>
+
+            <button class="botao-verde" style="width:100%"
+                onclick="finalizarCompra()">
+                Simular finalização
+            </button>
+        </div>
+    </div>
+
+    
+    <div class="modal-fundo" id="modalConteudo">
+        <div class="modal">
+            <div class="modal-topo">
+                <h2 id="tituloConteudo">Conteúdo</h2>
+                <button class="fechar" onclick="fecharModais()">×</button>
+            </div>
+
+            <div id="textoConteudo"></div>
+
+            <button class="botao-verde"
+                style="width:100%;margin-top:20px"
+                onclick="fecharModais()">
+                Entendi
+            </button>
+        </div>
+    </div>
+
+    <script>
+       
+        let produtos = [
+            {
+                id: 1,
+                nome: "Tomate fresco",
+                agricultor: "Sítio Boa Esperança",
+                categoria: "Legumes",
+                preco: 6.00,
+                unidade: "kg",
+                imagem: "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 2,
+                nome: "Banana",
+                agricultor: "Sítio São José",
+                categoria: "Frutas",
+                preco: 4.50,
+                unidade: "kg",
+                imagem: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 3,
+                nome: "Alface",
+                agricultor: "Horta da Família",
+                categoria: "Verduras",
+                preco: 3.00,
+                unidade: "unidade",
+                imagem: "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 4,
+                nome: "Manga",
+                agricultor: "Sítio das Mangueiras",
+                categoria: "Frutas",
+                preco: 5.00,
+                unidade: "kg",
+                imagem: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 5,
+                nome: "Cenoura",
+                agricultor: "Produção Familiar Silva",
+                categoria: "Legumes",
+                preco: 4.00,
+                unidade: "kg",
+                imagem: "https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 6,
+                nome: "Coentro",
+                agricultor: "Horta Verde",
+                categoria: "Verduras",
+                preco: 2.50,
+                unidade: "maço",
+                imagem: "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=700&q=80"
+            }
+        ];
+
+        let carrinho = [];
+
+       
+        function dinheiro(valor) {
+            return valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+        }
+
+        function mostrarProdutos() {
+            const lista = document.getElementById("listaProdutos");
+            const busca = document.getElementById("pesquisa")
+                .value.toLowerCase().trim();
+
+            const categoria = document.getElementById("filtroCategoria").value;
+            const ordem = document.getElementById("ordenacao").value;
+
+            let filtrados = produtos.filter(produto => {
+                const correspondeBusca =
+                    produto.nome.toLowerCase().includes(busca) ||
+                    produto.agricultor.toLowerCase().includes(busca);
+
+                const correspondeCategoria =
+                    categoria === "" || produto.categoria === categoria;
+
+                return correspondeBusca && correspondeCategoria;
+            });
+
+            if (ordem === "menor") {
+                filtrados.sort((a, b) => a.preco - b.preco);
+            } else if (ordem === "maior") {
+                filtrados.sort((a, b) => b.preco - a.preco);
+            } else if (ordem === "nome") {
+                filtrados.sort((a, b) => a.nome.localeCompare(b.nome));
+            }
+
+            lista.innerHTML = "";
+
+            if (filtrados.length === 0) {
+                lista.innerHTML =
+                    '<p class="vazio">Nenhum produto encontrado. Tente outra busca.</p>';
+                return;
+            }
+
+            filtrados.forEach(produto => {
+                const card = document.createElement("article");
+                card.className = "produto";
+
+                const imagem = document.createElement("img");
+                imagem.src = produto.imagem;
+                imagem.alt = produto.nome;
+                imagem.loading = "lazy";
+
+                imagem.onerror = function () {
+                    this.style.display = "none";
+                };
+
+                const info = document.createElement("div");
+                info.className = "produto-info";
+
+                const categoriaTag = document.createElement("span");
+                categoriaTag.className = "categoria";
+                categoriaTag.textContent = produto.categoria;
+
+                const nome = document.createElement("h3");
+                nome.textContent = produto.nome;
+
+                const produtor = document.createElement("p");
+                produtor.className = "produtor";
+                produtor.textContent = "🧑‍🌾 " + produto.agricultor;
+
+                const preco = document.createElement("div");
+                preco.className = "preco";
+                preco.textContent =
+                    dinheiro(produto.preco) + " / " + produto.unidade;
+
+                const botao = document.createElement("button");
+                botao.className = "botao-verde";
+                botao.textContent = "Adicionar ao carrinho";
+                botao.addEventListener("click", function () {
+                    adicionarCarrinho(produto.id);
+                });
+
+                info.append(categoriaTag, nome, produtor, preco, botao);
+                card.append(imagem, info);
+                lista.appendChild(card);
+            });
+        }
+
+        // PESQUISA E FILTROS
+        document.getElementById("pesquisa")
+            .addEventListener("input", mostrarProdutos);
+
+        document.getElementById("filtroCategoria")
+            .addEventListener("change", mostrarProdutos);
+
+        document.getElementById("ordenacao")
+            .addEventListener("change", mostrarProdutos);
+
+        // CADASTRO DE NOVOS PRODUTOS
+        document.getElementById("formProduto")
+            .addEventListener("submit", function (evento) {
+                evento.preventDefault();
+
+                const agricultor = document.getElementById("nomeAgricultor")
+                    .value.trim();
+
+                const nome = document.getElementById("nomeProduto")
+                    .value.trim();
+
+                const categoria = document.getElementById("categoriaProduto")
+                    .value;
+
+                const preco = Number(
+                    document.getElementById("precoProduto").value
+                );
+
+                const unidade = document.getElementById("unidadeProduto")
+                    .value;
+
+                const mensagem = document.getElementById("mensagemCadastro");
+
+                if (!agricultor || !nome || !categoria ||
+                    !Number.isFinite(preco) || preco <= 0) {
+                    mostrarMensagem(mensagem,
+                        "Confira os dados e informe um preço válido.", false);
+                    return;
+                }
+
+                const novoProduto = {
+                    id: Date.now(),
+                    nome: nome,
+                    agricultor: agricultor,
+                    categoria: categoria,
+                    preco: preco,
+                    unidade: unidade,
+                    imagem: ""
+                };
+
+                produtos.push(novoProduto);
+                mostrarProdutos();
+                this.reset();
+
+                mostrarMensagem(mensagem,
+                    "Produto cadastrado na vitrine com sucesso!", true);
+
+                document.getElementById("produtos").scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+
+       
+        function adicionarCarrinho(id) {
+            const produto = produtos.find(p => p.id === id);
+            if (!produto) return;
+
+            const existente = carrinho.find(item => item.id === id);
+
+            if (existente) {
+                existente.quantidade++;
+            } else {
+                carrinho.push({
+                    ...produto,
+                    quantidade: 1
+                });
+            }
+
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const quantidade = carrinho.reduce(
+                (soma, item) => soma + item.quantidade, 0
+            );
+
+            document.getElementById("quantidadeCarrinho")
+                .textContent = quantidade;
+
+            const lista = document.getElementById("itensCarrinho");
+            lista.innerHTML = "";
+
+            if (carrinho.length === 0) {
+                lista.textContent = "Seu carrinho está vazio.";
+            }
+
+            carrinho.forEach(item => {
+                const linha = document.createElement("div");
+                linha.className = "item-carrinho";
+
+                const descricao = document.createElement("span");
+                descricao.textContent =
+                    item.nome + " × " + item.quantidade +
+                    " — " + dinheiro(item.preco * item.quantidade);
+
+                const remover = document.createElement("button");
+                remover.textContent = "Remover";
+                remover.addEventListener("click", () => {
+                    carrinho = carrinho.filter(p => p.id !== item.id);
+                    atualizarCarrinho();
+                });
+
+                linha.append(descricao, remover);
+                lista.appendChild(linha);
+            });
+
+            const total = carrinho.reduce(
+                (soma, item) => soma + item.preco * item.quantidade, 0
+            );
+
+            document.getElementById("totalCarrinho").textContent =
+                "Total: " + dinheiro(total);
+        }
+
+        function abrirCarrinho() {
+            document.getElementById("modalCarrinho")
+                .classList.add("aberto");
+        }
+
+        function finalizarCompra() {
+            if (carrinho.length === 0) {
+                alert("Adicione pelo menos um produto ao carrinho.");
+                return;
+            }
+
+            alert(
+                "Simulação concluída! Esta versão não realiza pagamentos " +
+                "nem envia pedidos reais."
+            );
+        }
+
+       
+        const conteudos = {
+            sustentavel: {
+                titulo: "Agricultura sustentável",
+                texto: `
+                    <h3>O que é?</h3>
+                    <p>A agricultura sustentável busca produzir alimentos
+                    considerando a conservação dos recursos naturais e
+                    a viabilidade econômica e social da atividade.</p>
+                    <br>
+                    <h3>Práticas importantes</h3>
+                    <ul>
+                        <li>Conservar o solo e evitar erosão.</li>
+                        <li>Usar a água de forma responsável.</li>
+                        <li>Planejar o cultivo e a rotação de culturas.</li>
+                        <li>Monitorar pragas e doenças.</li>
+                    </ul>
+                `
+            },
+
+            irrigacao: {
+                titulo: "Irrigação e uso da água",
+                texto: `
+                    <h3>Por que a irrigação é importante?</h3>
+                    <p>A água participa de processos essenciais das plantas,
+                    como o transporte de nutrientes e a fotossíntese.</p>
+                    <br>
+                    <h3>Boas práticas</h3>
+                    <ul>
+                        <li>Observar a umidade do solo.</li>
+                        <li>Considerar o tipo de planta e o clima.</li>
+                        <li>Verificar possíveis vazamentos.</li>
+                        <li>Escolher um método adequado de irrigação.</li>
+                    </ul>
+                `
+            },
+
+            solo: {
+                titulo: "Solo, nutrientes e plantas",
+                texto: `
+                    <h3>Como a planta obtém nutrientes?</h3>
+                    <p>As raízes absorvem água e nutrientes minerais
+                    disponíveis no solo. Esses elementos participam do
+                    crescimento e de diversas reações metabólicas.</p>
+                    <br>
+                    <h3>O que observar?</h3>
+                    <ul>
+                        <li>Estrutura e drenagem do solo.</li>
+                        <li>Disponibilidade de matéria orgânica.</li>
+                        <li>Necessidades nutricionais da cultura.</li>
+                    </ul>
+                    <p>Para recomendações de correção e adubação,
+                    procure orientação técnica e análise do solo.</p>
+                `
+            },
+
+            nutricao: {
+                titulo: "Nutrição vegetal",
+                texto: `
+                    <h3>O que são nutrientes essenciais?</h3>
+                    <p>São elementos necessários para que as plantas
+                    completem seu ciclo de vida. Nitrogênio, fósforo,
+                    potássio e outros elementos possuem funções diferentes.</p>
+                    <br>
+                    <p>O nitrogênio participa da formação de proteínas,
+                    enquanto o fósforo é importante para a transferência
+                    de energia celular. A necessidade varia conforme a cultura.</p>
+                    <p>O uso de fertilizantes deve considerar a análise do solo
+                    e a orientação de um profissional.</p>
+                `
+            },
+
+            pragas: {
+                titulo: "Manejo de pragas",
+                texto: `
+                    <h3>Como começar?</h3>
+                    <p>O monitoramento frequente permite identificar
+                    alterações nas plantas e a presença de organismos
+                    que podem causar prejuízos.</p>
+                    <br>
+                    <ul>
+                        <li>Inspecionar as plantas regularmente.</li>
+                        <li>Registrar os sinais encontrados.</li>
+                        <li>Identificar corretamente o problema.</li>
+                        <li>Buscar orientação técnica antes de adotar medidas.</li>
+                    </ul>
+                    <p>Qualquer uso de defensivos deve seguir as normas
+                    aplicáveis e a orientação de profissionais habilitados.</p>
+                `
+            }
+        };
+
+        function abrirCurso(tipo) {
+            const conteudo = conteudos[tipo];
+            if (!conteudo) return;
+
+            document.getElementById("tituloConteudo").textContent =
+                conteudo.titulo;
+
+            document.getElementById("textoConteudo").innerHTML =
+                conteudo.texto;
+
+            document.getElementById("modalConteudo")
+                .classList.add("aberto");
+        }
+
+        function abrirOrientacao(tipo) {
+            abrirCurso(tipo);
+        }
+
+        function fecharModais() {
+            document.querySelectorAll(".modal-fundo").forEach(modal => {
+                modal.classList.remove("aberto");
+            });
+        }
+
+        document.querySelectorAll(".modal-fundo").forEach(modal => {
+            modal.addEventListener("click", function (evento) {
+                if (evento.target === modal) fecharModais();
+            });
+        });
+
+    
+        function mostrarMensagem(elemento, texto, sucesso) {
+            elemento.textContent = texto;
+            elemento.className = sucesso
+                ? "mensagem sucesso"
+                : "mensagem erro";
+        }
+
+   
+        document.getElementById("formContato")
+            .addEventListener("submit", function (evento) {
+                evento.preventDefault();
+
+                const mensagem = document.getElementById("mensagemContato");
+
+                mostrarMensagem(
+                    mensagem,
+                    "Mensagem registrada apenas nesta demonstração. " +
+                    "Para receber mensagens reais, será necessário " +
+                    "conectar o site a um sistema de envio ou servidor.",
+                    true
+                );
+
+                this.reset();
+            });
+
+        mostrarProdutos();
+        atualizarCarrinho();
+
+
+
+function falar(texto) {
+    if (!("speechSynthesis" in window)) {
+        document.getElementById("statusVoz").textContent =
+            "Seu navegador não oferece leitura por voz.";
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const mensagem = new SpeechSynthesisUtterance(texto);
+
+    mensagem.lang = "pt-BR";
+    mensagem.rate = 0.85;
+    mensagem.pitch = 1;
+    mensagem.volume = 1;
+
+    mensagem.onstart = function () {
+        document.getElementById("statusVoz").textContent =
+            " Lendo as informações...";
+    };
+
+    mensagem.onend = function () {
+        document.getElementById("statusVoz").textContent =
+            "Leitura concluída.";
+    };
+
+    mensagem.onerror = function () {
+        document.getElementById("statusVoz").textContent =
+            "Não foi possível reproduzir a voz.";
+    };
+
+    window.speechSynthesis.speak(mensagem);
+}
+
+
+function lerPagina() {
+    const texto = `
+        Bem-vindo ao AgroFácil.
+        Este site ajuda os agricultores familiares.
+
+        Na página inicial, você conhece o projeto.
+
+        Na área de produtos, você pode conhecer
+        frutas, verduras, legumes e outros alimentos.
+
+        Na área de cadastro, você pode divulgar
+        os produtos que deseja vender.
+
+        Nos minicursos, você encontra conteúdos
+        para aprender mais sobre agricultura.
+
+        Nas orientações, você encontra informações
+        para ajudar no trabalho no campo.
+
+        Escolha a área que deseja conhecer.
+    `;
+
+    falar(texto);
+}
+
+
+function explicarCadastro() {
+    const texto = `
+        Vamos aprender a cadastrar um produto.
+
+        Primeiro, informe o nome do agricultor.
+
+        Depois, informe o nome do produto
+        que você deseja vender.
+
+        Em seguida, escolha a categoria do produto.
+
+        Informe o preço em reais.
+
+        Preencha os outros campos solicitados
+        e aperte o botão cadastrar produto.
+
+        Se tiver dificuldade, peça ajuda
+        para ouvir novamente as instruções.
+    `;
+
+    falar(texto);
+}
+
+
+function pararVoz() {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+
+    document.getElementById("statusVoz").textContent =
+        "Leitura interrompida.";
+}
+
+
+function explicarCampo(id) {
+    const instrucoes = {
+        nomeAgricultor:
+            "Diga ou escreva o nome da pessoa que produz os alimentos.",
+
+        nomeProduto:
+            "Diga ou escreva o nome do produto que deseja vender.",
+
+        categoriaProduto:
+            "Escolha se o produto é fruta, verdura, legume ou outro tipo.",
+
+        precoProduto:
+            "Informe quanto custa o produto em reais.",
+
+        quantidadeProduto:
+            "Informe a quantidade disponível para venda."
+    };
+
+    falar(instrucoes[id] ||
+        "Preencha este campo conforme a orientação na tela.");
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const campos = document.querySelectorAll(
+        "#formProduto input, #formProduto select, #formProduto textarea"
+    );
+
+    campos.forEach(function (campo) {
+        campo.addEventListener("focus", function () {
+            explicarCampo(campo.id);
+        });
+    });
+});
+
+
+function preencherPorVoz(id) {
+    const Reconhecimento =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!Reconhecimento) {
+        falar(
+            "O reconhecimento de voz não está disponível " +
+            "neste navegador. Você pode preencher o campo " +
+            "com o teclado ou usar outro navegador compatível."
+        );
+        return;
+    }
+
+    const campo = document.getElementById(id);
+
+    if (!campo) return;
+
+    const reconhecimento = new Reconhecimento();
+
+    reconhecimento.lang = "pt-BR";
+    reconhecimento.interimResults = false;
+    reconhecimento.maxAlternatives = 1;
+
+    reconhecimento.onstart = function () {
+        document.getElementById("statusVoz").textContent =
+            " Pode falar agora.";
+    };
+
+    reconhecimento.onresult = function (evento) {
+        campo.value =
+            evento.results[0][0].transcript;
+
+        campo.dispatchEvent(
+            new Event("input", { bubbles: true })
+        );
+
+        campo.dispatchEvent(
+            new Event("change", { bubbles: true })
+        );
+
+        falar("Informação preenchida. Confira se está correta.");
+    };
+
+    reconhecimento.onerror = function () {
+        document.getElementById("statusVoz").textContent =
+            "Não consegui reconhecer a fala. Tente novamente.";
+    };
+
+    reconhecimento.start();
+}
+
+const minicursos = {
+    sustentavel: {
+        titulo: "Introdução à agricultura sustentável",
+        texto: `
+            Olá, agricultor! Vamos aprender sobre agricultura sustentável.
+
+            Agricultura sustentável é produzir alimentos cuidando da natureza.
+
+            Primeiro, cuide do solo. Evite deixar a terra descoberta
+            por muito tempo e procure utilizar técnicas que diminuam
+            a erosão.
+
+            Segundo, economize água e evite desperdícios.
+
+            Terceiro, preserve as árvores, os animais e os insetos
+            que ajudam no equilíbrio da natureza.
+
+            Sempre que possível, faça a rotação de culturas.
+            Isso significa alternar os tipos de plantas cultivadas
+            em uma mesma área.
+
+            Lembre-se: cuidar da natureza também ajuda a manter
+            a produção agrícola no futuro.
+
+            Parabéns por aprender com o AgroFácil!
+        `
+    },
+
+    irrigacao: {
+        titulo: "Irrigação e uso da água",
+        texto: `
+            Olá, agricultor! Vamos aprender sobre irrigação.
+
+            Irrigação é fornecer água para as plantas quando
+            a chuva não é suficiente.
+
+            Uma dica importante é observar a umidade do solo
+            antes de molhar as plantas.
+
+            Regue de acordo com a necessidade de cada cultura.
+            Evite colocar água em excesso.
+
+            Quando for adequado para a sua plantação, a irrigação
+            por gotejamento pode ajudar a economizar água,
+            porque leva a água diretamente perto das raízes.
+
+            Verifique se existem vazamentos nas mangueiras
+            e nos equipamentos.
+
+            Economizar água ajuda a reduzir desperdícios
+            e pode diminuir os custos da produção.
+
+            Obrigado por aprender com o AgroFácil!
+        `
+    },
+
+    solo: {
+        titulo: "Solo, nutrientes e plantas",
+        texto: `
+            Olá, agricultor! Vamos aprender sobre o solo.
+
+            O solo fornece sustentação, água e nutrientes
+            para as plantas crescerem.
+
+            Entre os nutrientes importantes estão o nitrogênio,
+            o fósforo e o potássio.
+
+            Cada planta precisa de quantidades diferentes
+            desses nutrientes.
+
+            Por isso, uma análise do solo ajuda a identificar
+            quais nutrientes estão faltando.
+
+            Evite usar fertilizantes sem orientação adequada.
+            O excesso pode prejudicar as plantas e o ambiente.
+
+            A matéria orgânica, como o composto bem preparado,
+            pode ajudar a melhorar a qualidade do solo.
+
+            Cuidar do solo é cuidar da sua produção.
+
+            Parabéns por concluir este minicurso!
+        `
+    }
+};
+
+let cursoAtual = null;
+
+function abrirCurso(id) {
+    pararCurso();
+
+    cursoAtual = minicursos[id];
+
+    if (!cursoAtual) return;
+
+    document.getElementById("tituloCurso").textContent =
+        cursoAtual.titulo;
+
+    document.getElementById("conteudoCurso").textContent =
+        cursoAtual.texto.trim();
+
+    document.getElementById("modalCurso").classList.add("aberto");
+
+    document.getElementById("statusCurso").textContent =
+        "Minicurso aberto. Aperte Ouvir minicurso para escutar.";
+
+    document.getElementById("modalCurso")
+        .querySelector(".fechar").focus();
+}
+
+function ouvirCursoAtual() {
+    if (!cursoAtual) return;
+
+    if (!("speechSynthesis" in window)) {
+        document.getElementById("statusCurso").textContent =
+            "Seu navegador não oferece leitura em voz alta.";
+        return;
+    }
+
+    pararCurso();
+
+    const fala = new SpeechSynthesisUtterance(
+        cursoAtual.titulo + ". " + cursoAtual.texto
+    );
+
+    fala.lang = "pt-BR";
+    fala.rate = 0.85;
+    fala.pitch = 1;
+    fala.volume = 1;
+
+    fala.onstart = function () {
+        document.getElementById("statusCurso").textContent =
+            " O minicurso está sendo lido em voz alta.";
+    };
+
+    fala.onend = function () {
+        document.getElementById("statusCurso").textContent =
+            " Minicurso concluído! Você pode ouvir novamente.";
+    };
+
+    fala.onerror = function () {
+        document.getElementById("statusCurso").textContent =
+            "Não foi possível reproduzir o áudio. Tente novamente.";
+    };
+
+    window.speechSynthesis.speak(fala);
+}
+
+function pararCurso() {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+
+    const status = document.getElementById("statusCurso");
+
+    if (status) {
+        status.textContent = "Áudio parado.";
+    }
+}
+
+function fecharCurso() {
+    pararCurso();
+
+    document.getElementById("modalCurso")
+        .classList.remove("aberto");
+
+    cursoAtual = null;
+}
+
+document.addEventListener("keydown", function (evento) {
+    if (evento.key === "Escape") {
+        const modal = document.getElementById("modalCurso");
+
+        if (modal.classList.contains("aberto")) {
+            fecharCurso();
+        }
+    }
+});
+
+
+
+    </script>
+
+</body>
+</html>
