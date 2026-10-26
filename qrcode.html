@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroFácil | Conheça nosso projeto</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f8ed;
+            color: #24452d;
+        }
+
+        header {
+            background: #215c35;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #b8e986;
+        }
+
+        header p {
+            font-size: 14px;
+        }
+
+        .principal {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 45px;
+        }
+
+        .conteudo h1 {
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .conteudo h1 span {
+            color: #39824b;
+        }
+
+        .conteudo p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #536957;
+            margin-bottom: 20px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background: #e0efcf;
+            color: #28643a;
+            padding: 9px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .botao {
+            display: inline-block;
+            background: #347b43;
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: #215c35;
+            transform: translateY(-2px);
+        }
+
+        .cartao {
+            background: white;
+            padding: 32px 25px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 35px #24452d14;
+            border: 1px solid #e0ead9;
+        }
+
+        .cartao h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .cartao > p {
+            color: #718071;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .qr-area {
+            display: inline-block;
+            background: white;
+            border: 3px solid #347b43;
+            border-radius: 15px;
+            padding: 12px;
+            max-width: 100%;
+        }
+
+        #qrcode {
+            display: block;
+            width: 220px;
+            height: 220px;
+            max-width: 100%;
+        }
+
+        .instrucao {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #28643a;
+        }
+
+        .decoracao {
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .aviso {
+            font-size: 12px;
+            color: #758575;
+            margin-top: 12px;
+        }
+
+        footer {
+            background: #e4efd9;
+            padding: 25px 15px;
+            text-align: center;
+            color: #47664b;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: #215c35;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .principal {
+                grid-template-columns: 1fr;
+                margin: 20px auto;
+                gap: 30px;
+                padding: 20px;
+            }
+
+            .conteudo {
+                text-align: center;
+            }
+
+            .conteudo h1 {
+                font-size: 32px;
+            }
+
+            .cartao {
+                padding: 25px 15px;
+            }
+
+            #qrcode {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Agro<span>Fácil</span></div>
+        <p>Conectando o campo às oportunidades</p>
+    </header>
+
+    <main class="principal">
+
+        <section class="conteudo">
+            <div class="etiqueta">
+                VALORIZANDO A AGRICULTURA FAMILIAR
+            </div>
+
+            <h1>
+                O campo mais perto de você com o
+                <span>AgroFácil!</span>
+            </h1>
+
+            <p>
+                Uma plataforma criada para aproximar pequenos
+                produtores rurais e consumidores, facilitando
+                a divulgação e a comercialização de produtos
+                da agricultura familiar.
+            </p>
+
+            <p>
+                Aponte a câmera do celular para o QR Code e
+                conheça nossa plataforma!
+            </p>
+
+            <a
+                class="botao"
+                href="https://wxana009-cpu.github.io/Agro_Facil/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Conhecer o AgroFácil →
+            </a>
+        </section>
+
+        <section class="cartao">
+            <div class="decoracao"></div>
+
+            <h2>Acesse nossa plataforma</h2>
+
+            <p>
+                Escaneie o código abaixo com a câmera
+                do seu celular.
+            </p>
+
+            <div class="qr-area">
+                <img
+                    id="qrcode"
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;data=https%3A%2F%2Fwxana009-cpu.github.io%2FAgro_Facil%2F"
+                    alt="QR Code para acessar o site AgroFácil"
+                    width="220"
+                    height="220"
+                >
+            </div>
+
+            <p class="instrucao">
+                Aponte a câmera e descubra!
+            </p>
+
+            <p class="aviso">
+                AgroFácil — Tecnologia a favor do campo.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <strong>AgroFácil </strong>
+        <p>Valorizando quem produz e aproximando pessoas.</p>
+        <p>Projeto de TCC — Tecnologia e agricultura familiar</p>
+    </footer>
+
+</body>
+</html>
